@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kéng ATABA · Data & ML Engineer Portfolio</title>
+  <!-- Font Awesome 6 (icônes) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Barre de navigation */
+    nav {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.8rem 0;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #334155;
+      font-weight: 500;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: #0f172a;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 4rem 0 3rem;
+      text-align: center;
+      background: linear-gradient(105deg, #ffffff 0%, #f1f5f9 100%);
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .title {
+      font-size: 1.5rem;
+      color: #2563eb;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .availability-badge {
+      background: #dcfce7;
+      color: #15803d;
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin: 1.2rem 0;
+      border: 1px solid #bbf7d0;
+    }
+
+    .contact-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1.8rem;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .contact-row i {
+      margin-right: 0.5rem;
+      color: #2563eb;
+    }
+
+    /* Sections */
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 60%;
+      height: 4px;
+      background: #2563eb;
+      border-radius: 4px;
+    }
+
+    /* Compétences */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .skill-category {
+      background: white;
+      border-radius: 20px;
+      padding: 1.8rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-category h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      background: #f1f5f9;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1e293b;
+    }
+
+    /* Timeline expériences */
+    .timeline {
+      position: relative;
+      margin-left: 20px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 8px;
+      bottom: 0;
+      width: 3px;
+      background: #e2e8f0;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 45px;
+      margin-bottom: 2.8rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 2px;
+      top: 6px;
+      width: 20px;
+      height: 20px;
+      background: #2563eb;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 0 0 3px #2563eb;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: baseline;
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .exp-meta {
+      color: #475569;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .exp-details {
+      color: #334155;
+      margin-top: 0.8rem;
+      padding-left: 1.2rem;
+    }
+
+    .exp-details li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Projets */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.8rem;
+      box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.05);
+      transition: all 0.25s;
+      border: 1px solid #f1f5f9;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+      border-color: #cbd5e1;
+    }
+
+    .project-card h4 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 1rem 0;
+    }
+
+    .project-stack span {
+      background: #e0e7ff;
+      color: #1e3a8a;
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Formation */
+    .education-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .cert-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .cert-badge {
+      background: #fef9c3;
+      color: #854d0e;
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 2rem;
+    }
+
+    footer a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Kéng Ataba</div>
+      <ul class="nav-links">
+        <li><a href="#profil">Profil</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#experiences">Expériences</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#formation">Formation</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="profil">
+    <div class="container">
+      <h1>Kéng ATABA</h1>
+      <div class="title">Data & Machine Learning Engineer</div>
+      <p style="max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: #334155;">
+        Ingénieur ML & Data avec 2+ ans d'expérience en production : pipelines robustes, modèles optimisés, réduction
+        des coûts cloud.
+        <br>Résultats prouvés : 85-87% de précision, latence réduite de 35-40%, coûts infra réduits de 20%.
+      </p>
+      <div class="availability-badge">
+        <i class="fas fa-circle" style="font-size: 0.6rem; color: #15803d; margin-right: 6px;"></i> Disponible
+        immédiatement — Maroc, France, Afrique de l'Ouest
+      </div>
+      <div class="contact-row">
+        <span><i class="fas fa-envelope"></i> kengataba@yahoo.com</span>
+        <span><i class="fas fa-phone"></i> +212 659 904 264</span>
+        <span><i class="fas fa-map-marker-alt"></i> Casablanca, Maroc</span>
+        <span><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/kengataba/" target="_blank"
+            style="color: inherit; text-decoration: none;">LinkedIn</a></span>
+        <span><i class="fab fa-github"></i> <a href="https://github.com/Ataba-Keng" target="_blank"
+            style="color: inherit; text-decoration: none;">GitHub · Ataba-Keng</a></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Compétences -->
+    <section id="competences">
+      <h2 class="section-title">🛠️ Compétences techniques</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3><i class="fas fa-brain" style="color:#2563eb;"></i> ML / Deep Learning</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">TensorFlow</span><span class="skill-tag">Keras</span><span
+              class="skill-tag">CatBoost</span>
+            <span class="skill-tag">XGBoost</span><span class="skill-tag">Scikit-learn</span><span
+              class="skill-tag">CNN</span>
+            <span class="skill-tag">MLP</span><span class="skill-tag">NLP</span><span class="skill-tag">Naïve
+              Bayes</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3><i class="fas fa-database" style="color:#2563eb;"></i> Data Engineering</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Apache Spark</span><span class="skill-tag">Airflow</span><span
+              class="skill-tag">dbt</span>
+            <span class="skill-tag">Kafka</span><span class="skill-tag">DuckDB</span><span
+              class="skill-tag">BigQuery</span>
+            <span class="skill-tag">PostgreSQL</span><span class="skill-tag">MongoDB</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3><i class="fas fa-cloud" style="color:#2563eb;"></i> Cloud & MLOps</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">AWS (S3, Glue, Athena)</span><span class="skill-tag">GCP</span><span
+              class="skill-tag">Terraform</span>
+            <span class="skill-tag">Docker</span><span class="skill-tag">CI/CD (GitHub Actions)</span><span
+              class="skill-tag">Flask</span>
+            <span class="skill-tag">Streamlit</span><span class="skill-tag">Prometheus</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3><i class="fas fa-code" style="color:#2563eb;"></i> Langages</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">Bash</span>
+            <span class="skill-tag">Java</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expériences -->
+    <section id="experiences">
+      <h2 class="section-title">💼 Expériences professionnelles</h2>
+      <div class="timeline">
+        <!-- Freelance -->
+        <div class="timeline-item">
+          <div class="exp-header">
+            <span class="exp-title">Ingénieur ML & Data (Freelance)</span>
+            <span class="exp-meta">Modeo / Indépendant · Fév 2025 – Présent · Casablanca</span>
+          </div>
+          <ul class="exp-details">
+            <li>Architecturé un Data Lake multi-zones (Bronze/Silver/Gold) sur AWS S3 via Terraform (IaC) → provisioning
+              réduit de 4h à &lt;20 min (-83%), coûts stockage -20%.</li>
+            <li>Développé des pipelines d'ingestion Python REST API (50 000+ transactions/jour) avec retry exponentiel,
+              99.8% de disponibilité, zéro perte de données.</li>
+            <li>Conçu des pipelines dbt modulaires réduisant la latence analytique BI de 35-37% (de 8s à 5s), reporting
+              temps réel pour 20+ analystes.</li>
+            <li>CI/CD GitHub Actions éliminant 100% des déploiements manuels Terraform, automatisation des tests.</li>
+          </ul>
+        </div>
+        <!-- Stage ENSIAS -->
+        <div class="timeline-item">
+          <div class="exp-header">
+            <span class="exp-title">Data & AI Engineer (Stage PFE)</span>
+            <span class="exp-meta">ENSIAS · LIEN · Mar – Juil 2024 · Rabat</span>
+          </div>
+          <ul class="exp-details">
+            <li>Orchestré un pipeline ETL Airflow pour 400+ dossiers médicaux, préparation réduite de 5h à 2h/dossier
+              (-60%).</li>
+            <li>Entraîné et optimisé un modèle CatBoost : 85-87% de précision (F1-score), +12 pts vs baseline régression
+              logistique, validé en cross-validation.</li>
+            <li>Déployé une API REST Flask conteneurisée (Docker), scoring médical &lt;100ms, réduction des évaluations
+              manuelles de 40%.</li>
+            <li>MLOps avec CI/CD GitHub Actions, reproductibilité totale dev/prod.</li>
+          </ul>
+        </div>
+        <!-- Stage ISGA -->
+        <div class="timeline-item">
+          <div class="exp-header">
+            <span class="exp-title">Data Scientist (Stage)</span>
+            <span class="exp-meta">ISGA Marrakech · Juil – Sep 2023 · Marrakech</span>
+          </div>
+          <ul class="exp-details">
+            <li>Pipeline NLP complet (tokenisation, feature engineering, classification) : 90% F1-score sur corpus de
+              production avec Naïve Bayes.</li>
+            <li>Réduction du temps de prétraitement de 65% sur 1 000+ documents/jour (réécriture SQL, vectorisation
+              pandas).</li>
+            <li>Conçu 3 dashboards Streamlit adoptés comme outil de reporting principal par la direction.</li>
+            <li>Automatisation extraction de 10 000+ documents textuels pour analyse de sentiment.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projets">
+      <h2 class="section-title">📁 Projets data & ML</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h4><i class="fas fa-chart-line"></i> Pipeline ELT Serverless AWS + dbt</h4>
+          <p>S3 → Glue → Athena avec transformations dbt, monitoring Streamlit temps réel, latence batch <5s, fiabilité
+              99.8%.</p>
+              <div class="project-stack">
+                <span>AWS S3</span><span>Glue</span><span>Athena</span><span>dbt</span><span>Streamlit</span>
+              </div>
+              <small>🔗 <a href="https://github.com/Ataba-Keng/AWS-Serverless-Crypto-Pipeline-Dashboard" target="_blank"
+                  style="color: #2563eb; text-decoration: none; font-weight: 600;">GitHub Repository</a></small>
+        </div>
+        <div class="project-card">
+          <h4><i class="fas fa-bolt"></i> Lambda Architecture – Stock Market Streaming</h4>
+          <p>Kafka + Spark Structured Streaming, latence <2s /message, stockage Parquet (-60% volume), déploiement
+              Docker.</p>
+              <div class="project-stack">
+                <span>Kafka</span><span>Spark</span><span>Airflow</span><span>MinIO</span>
+              </div>
+              <small>🔗 <a href="https://github.com/Ataba-Keng/Stock-Market-Data-Pipeline-Lambda-Architecture-"
+                  target="_blank" style="color: #2563eb; text-decoration: none; font-weight: 600;">GitHub
+                  Repository</a></small>
+        </div>
+        <div class="project-card">
+          <h4><i class="fas fa-database"></i> Real-Time Data Lake Pipeline</h4>
+          <p>Ingestion de données utilisateurs en temps réel via API publique, transformation et stockage architecture
+            Data Lake (Bronze/Silver) sur AWS.</p>
+          <div class="project-stack">
+            <span>Python</span><span>AWS S3</span><span>ETL</span><span>Real-time</span>
+          </div>
+          <small>🔗 <a href="https://github.com/Ataba-Keng/Real-Time-Data-Lake-Pipeline-API---ETL---S3-" target="_blank"
+              style="color: #2563eb; text-decoration: none; font-weight: 600;">GitHub Repository</a></small>
+        </div>
+        <div class="project-card">
+          <h4><i class="fas fa-shield-alt"></i> Détection d'intrusion réseau (CNN/MLP)</h4>
+          <p>Entraîné sur trafic Wireshark réel, 40+ features statistiques → 98% de précision de classification.</p>
+          <div class="project-stack">
+            <span>TensorFlow</span><span>CNN</span><span>MLP</span><span>Wireshark</span>
+          </div>
+          <small>🔗 <a href="https://github.com/Ataba-Keng/Pr-diction-d-intrusions-dans-un-r-seau-IDS-" target="_blank"
+              style="color: #2563eb; text-decoration: none; font-weight: 600;">GitHub Repository</a></small>
+        </div>
+        <div class="project-card">
+          <h4><i class="fas fa-memory"></i> Pipeline ELT Single-Node (DuckDB)</h4>
+          <p>Remplacement stack multi-conteneurs par DuckDB in-process : mémoire -60%, cycles de développement 3× plus
+            rapides.</p>
+          <div class="project-stack">
+            <span>DuckDB</span><span>dbt</span><span>Python</span>
+          </div>
+          <small>🔗 <a href="https://github.com/Ataba-Keng/Serverless-ELT-Pipeline-DuckDB-dbt-" target="_blank"
+              style="color: #2563eb; text-decoration: none; font-weight: 600;">GitHub Repository</a></small>
+        </div>
+        <div class="project-card">
+          <h4><i class="fas fa-coins"></i> Prédiction indice MASI (Random Forest)</h4>
+          <p>Feature engineering sur 5 ans de données financières, backtesting + cross-validation pour zéro data
+            leakage.</p>
+          <div class="project-stack">
+            <span>Random Forest</span><span>Pandas</span><span>Scikit-learn</span>
+          </div>
+          <small>🔗 <a href="https://github.com/Ataba-Keng/Prediction-du-prix-de-l-indice-MASI" target="_blank"
+              style="color: #2563eb; text-decoration: none; font-weight: 600;">GitHub Repository</a></small>
+        </div>
+        <div class="project-card">
+          <h4><i class="fas fa-microscope"></i> Application Prédiction Cancer du Sein</h4>
+          <p>Développement d'une application de diagnostic assisté par IA utilisant des modèles de classification,
+            conteneurisée avec Docker.</p>
+          <div class="project-stack">
+            <span>Python</span><span>Scikit-learn</span><span>Docker</span><span>Jupyter</span>
+          </div>
+          <small>🔗 <a href="https://github.com/Ataba-Keng/Aplication-pour-la-prediction-du-cancer-de-sein"
+              target="_blank" style="color: #2563eb; text-decoration: none; font-weight: 600;">GitHub
+              Repository</a></small>
+        </div>
+        <div class="project-card">
+          <h4><i class="fas fa-hospital-user"></i> Analyse Exploratoire Hygiène PME</h4>
+          <p>Application web d'analyse de données (EDA) dédiée à l'hygiène dans les PME, facilitant la visualisation des
+            tendances sanitaires.</p>
+          <div class="project-stack">
+            <span>Python</span><span>Pandas</span><span>Streamlit</span><span>EDA</span>
+          </div>
+          <small>🔗 <a
+              href="https://github.com/Ataba-Keng/Application-web-pour-l-analyse-Exploratoire-des-Donn-es-d-Hygi-ne-des-PME"
+              target="_blank" style="color: #2563eb; text-decoration: none; font-weight: 600;">GitHub
+              Repository</a></small>
+        </div>
+        <div class="project-card">
+          <h4><i class="fas fa-cat"></i> Analyse Prédictive avec CatBoost</h4>
+          <p>Implémentation et optimisation de modèles Gradient Boosting (CatBoost) pour des tâches de classification
+            complexe sur des données tabulaires.</p>
+          <div class="project-stack">
+            <span>Python</span><span>CatBoost</span><span>Machine Learning</span><span>Optimization</span>
+          </div>
+          <small>🔗 <a href="https://github.com/Ataba-Keng/catboost" target="_blank"
+              style="color: #2563eb; text-decoration: none; font-weight: 600;">GitHub Repository</a></small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formation & Certifications -->
+    <section id="formation">
+      <h2 class="section-title">🎓 Formation & certifications</h2>
+      <div class="education-card">
+        <div>
+          <h3 style="font-size: 1.5rem;">Diplôme d'Ingénieur d'État (Bac+5)</h3>
+          <p style="font-weight: 500;">Systèmes Informatiques, spécialité <strong>IA & Big Data</strong></p>
+          <p>ISGA Marrakech · Oct 2019 – Juil 2024</p>
+        </div>
+        <div style="font-size: 2.5rem; color: #2563eb;">🎓</div>
+      </div>
+      <div style="margin-top: 2rem;">
+        <h4 style="margin-bottom: 0.8rem;">📜 Certifications</h4>
+        <div class="cert-list">
+          <span class="cert-badge">Python for Data Science (IBM)</span>
+          <span class="cert-badge">AI & ML Specialist (LinkedIn)</span>
+          <span class="cert-badge">SQL Avancé (LinkedIn)</span>
+          <span class="cert-badge">AWS Cloud Practitioner (en cours)</span>
+        </div>
+      </div>
+      <p style="margin-top: 2rem; color: #334155;"><i class="fas fa-language"></i> <strong>Langues :</strong> Français
+        (natif) · Anglais (technique)</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Kéng Ataba — Construit avec <i class="fas fa-heart" style="color: #ef4444;"></i> pour la data.</p>
+      <p style="margin-top: 0.5rem;">
+        <a href="mailto:kengataba@yahoo.com"><i class="fas fa-envelope"></i> Email</a> ·
+        <a href="https://www.linkedin.com/in/kengataba/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> ·
+        <a href="https://github.com/Ataba-Keng" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- JavaScript pour interactions douces -->
+  <script>
+    // Défilement fluide pour les ancres
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Animation légère au survol des cartes projets (déjà en CSS, mais ajout d'un effet JS subtil)
+    const cards = document.querySelectorAll('.project-card, .skill-category');
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transition = 'all 0.25s ease';
+      });
+    });
+
+    // Affichage de l'année dynamique dans le footer
+    const yearSpan = document.querySelector('footer .container p:first-child');
+    if (yearSpan) {
+      yearSpan.innerHTML = yearSpan.innerHTML.replace('2025', new Date().getFullYear());
+    }
+  </script>
+</body>
+
+</html>
